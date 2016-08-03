@@ -1,6 +1,12 @@
 Week 1 
 Peer Graded Assignment: Dating Web Site Assessment
-Instructionsless 
+
+Part 1: Web page content without style
+Part 2: Applying visual style
+Part 3: Adding interactive features
+
+
+Instructions
 The Task 
 
 A startup company wishes to build a web site for their online dating business. They have employed a designer who has produced the following design using desktop publishing software. The software used by the designer only produces an image, and does not produce HTML.
