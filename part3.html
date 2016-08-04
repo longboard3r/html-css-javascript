@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Part 3 - Dating website assessment</title>
+	<meta name="author" content="Joseph Barrowcliffe">
+
+	<style type="text/css">
+		fieldset {
+			background:lightyellow;
+			border: 10px solid yellow;
+			margin-bottom: 10px;
+			width: 720px;
+		}
+
+		input {
+			margin-bottom: 5px;
+		}
+
+		label {
+			width: 180px;
+			display: inline-block;
+			text-align: right;
+			vertical-align: top;			
+		}
+		label:hover,
+		input:hover,		
+		select:hover { 
+			font-size: 1.5em;
+		}
+		textarea:hover {
+			height:;
+		}
+
+		textarea {
+			width: 360px;
+			height: 50px;
+		}
+
+		.range-text {
+			vertical-align: top;
+			text-align: center;
+			width: 40px;
+			margin-left:10px;
+			margin-right: 10px;
+			color: white;
+			outline: 5px solid;
+		}
+		.range-text-min {
+			background-color: darkred;
+			outline-color: darkred;
+		}
+		.range-text-max {
+			background-color: purple;
+			outline-color: purple;
+		}
+		.radio-check {
+			width: auto;
+		}
+	</style>
+	<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+</head>
+<body>
+	<h1>Please enter your details for our dating website!</h1>
+	<form action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+		<fieldset>
+				<legend>Your face</legend>
+				<label for="your-image">Your image:</label><input type="file" name="your-image" id="your-image" required><br>
+				<label for="your-image">Image preview:</label><img src="" id="preview">
+		</fieldset>
+
+		<fieldset>
+				<legend>Your general details</legend>
+				<label for="name">Name:</label><input type="text" name="name" id="name" required><br>
+				<label>Gender:</label>
+				<input type="radio" name="gender" id="male" value="male" required><label for="male" class="radio-check">Male</label>
+				<input type="radio" name="gender" id="female" value="female" required><label for="female" class="radio-check">Female</label><br>
+				<label for="age">Age:</label><input type="number" name="age" id="age" required><br>
+				<label for="date-of-birth">Date of birth:</label><input type="date" name="date-of-birth" id="date-of-birth"><br>
+				<label for="favourite-colour">Favourite colour:</label><input type="color" name="favourite-colour" id="favourite-colour" ><br>
+				<label for="country">Which country:</label>
+				<select name="country" id="country">
+					<option value="">Select...</option>
+					<option value="HK">Hong Kong</option>
+					<option value="AU">Australia</option>
+					<option value="UK">United Kingdom</option>
+					<option value="NZ">New Zealand</option>
+					<option value="IT">Italy</option>
+				</select>
+
+		</fieldset>
+
+		<fieldset>
+				<legend>Your indicators</legend>
+				<label for="height">Height:</label>
+				<label for="height" class="range-text range-text-min">Short</label><input type="range" name="height" id="height" min="0" max="100"><label for="height" class="range-text range-text-max" >Tall</label><br>
+				<label for="salary">Salary:</label>
+				<label for="salary" class="range-text range-text-min">Poor</label><input type="range" name="salary" id="salary" min="0" max="100"><label for="salary" class="range-text range-text-max">Rich</label>
+		</fieldset>
+
+		<fieldset>
+				<legend>Your contact information</legend>
+				<label for="email">Email:</label><input type="email" name="email" id="email" required><br>
+				<label for="mobile">Mobile:</label><input type="tel" name="mobile" id="mobile"><br>
+				<label for="address">Address:</label><textarea name="address" id="address"></textarea><br>
+				<label>Method to contact you:</label>
+					<input type="checkbox" name="contact-method" id="email-me" value="email"><label for="email-me" class="radio-check">Email</label>
+					<input type="checkbox" name="contact-method" id="whatsapp" value="whatsapp"><label for="whatsapp" class="radio-check">Whatsapp</label>
+					<input type="checkbox" name="contact-method" id="in-app-chat" value="in-app-chat"><label for="in-app-chat" class="radio-check">In-app chat</label>				
+		</fieldset><br>
+		<input type="submit" name="submit">
+	</form>
+
+</body>
+</html>
