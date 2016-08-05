@@ -7,9 +7,9 @@ https://www.coursera.org/learn/html-css-javascript
 Week 1 
 Peer Graded Assignment: Dating Web Site Assessment
 
-Part 1: Web page content without style 
-Part 2: Applying visual style 
-Part 3: Adding interactive features
+Part 1: Web page content without style  
+Part 2: Applying visual style  
+Part 3: Adding interactive features  
 
 
 Instructions
