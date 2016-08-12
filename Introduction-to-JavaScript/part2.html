@@ -11,11 +11,11 @@
 				text-align: center;				
 				color: red;
 				
-				-webkit-animation: color_change 3s infinite alternate;
-				-moz-animation: color_change 3s infinite alternate;
-				-ms-animation: color_change 3s infinite alternate;
-				-o-animation: color_change 3s infinite alternate;
-				animation: color_change 3s infinite alternate;
+				-webkit-animation: color_change 2s infinite alternate;
+				-moz-animation: color_change 2s infinite alternate;
+				-ms-animation: color_change 2s infinite alternate;
+				-o-animation: color_change 2s infinite alternate;
+				animation: color_change 2s infinite alternate;
 			}
 			
 			@keyframes color_change {
@@ -37,20 +37,20 @@
 			var target_index;
 			var guess_input;
 			var guesses;
-			var game_over;
+			var game_over;			
 			
 			// set inital values 
 			colours = ["red", "orange", "yellow", "green", "blue","indigo", "violet"];
 			colours.sort();	
 			guesses = 0;		
-			gameOver = false;
+			game_over = false;			
 						
 			// the main game function
 			function do_game() {
 
 				target_index = Math.floor( Math.random() * 7);
 				target = colours[target_index];
-				alert("The target colour is: " + target);
+				alert("The target colour is: " + target);				
 
 				// the game loop
 				while(!game_over) {
@@ -84,11 +84,11 @@
 					alert("Sorry, your guess is incorrect! \n\n Hint: your colour is alphabetically lower than mine.");
 					return false;
 
-				}else {
+				}else {					
 					
-					gameBody = document.getElementsByTagName("body")[0];
-					gameBody.style.background = target;	
-					alert("You are right! You took " + guesses +" guesses!");							
+					var game_body = document.getElementsByTagName("body")[0];
+					game_body.style.background = target;
+					alert("You are right! You took " + guesses +" guesses!");											
 					return true;
 				}  
 			}
