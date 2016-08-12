@@ -2,11 +2,42 @@
 	<head>
 		<title>Colour Guessing Game - part 1</title>
 		<script>
-			// set up array of colours to guess from
-			var colours = ["red", "orange", "yellow", "cyan", "blue","purple"];
+			
+			// declare the game variables
+			var colours;
 			var target;
+			var target_index;
+			var guess_input;
+			var game_over;
+			
+			// set inital values 
+			colours = ["red", "orange", "yellow", "green", "blue","indigo", "violet"];
+			colours.sort();			
+			gameOver = false;
+						
+			// the main game function
+			function do_game() {
+
+				target_index = Math.floor( Math.random() * 7);
+				target = colours[target_index];
+				alert("The target colour is: " + target);
+
+				// the game loop
+				while(!game_over) {
+
+					guess_input = prompt("I am thinking of one of these colours: \n\n" +
+											colours +  "\n\nWhat colour am I thinking of?");
+
+					if(guess_input == target) {
+
+						game_over = true; // end of the game
+					}
+				}
+			}
+
 		</script>
 	</head>
-	<body>		
+	<body onLoad="do_game();">
+
 	</body>
 </html>

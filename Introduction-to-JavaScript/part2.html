@@ -3,6 +3,7 @@
 		<title>Colour Guessing Game - part 2</title>
 		<style type="text/css">
 			
+			/* Game theme, just for fun */
 			body {
 				
 				font-size: 50em;
@@ -28,18 +29,78 @@
 				100% { color: violet; }
 			}
 		</style>
-		<script>
+		<script>			
 			
-			var colors;
+			// declare the game variables
+			var colours;
 			var target;
-			var gameOver;
-			// set up array of colours to guess from
-			colours = ["red", "orange", "yellow", "green", "blue","indigo", "violet"];			
+			var target_index;
+			var guess_input;
+			var guesses;
+			var game_over;
+			
+			// set inital values 
+			colours = ["red", "orange", "yellow", "green", "blue","indigo", "violet"];
+			colours.sort();	
+			guesses = 0;		
 			gameOver = false;
-			target = Math.floor( Math.random() * 8;
+						
+			// the main game function
+			function do_game() {
+
+				target_index = Math.floor( Math.random() * 7);
+				target = colours[target_index];
+				alert("The target colour is: " + target);
+
+				// the game loop
+				while(!game_over) {
+
+					guesses++;
+					guess_input = prompt("I am thinking of one of these colours: \n\n" +
+											colours +  "\n\nWhat colour am I thinking of?");
+					game_over = check_guess();
+					
+				}
+			}
+
+			// check guess and give hints
+			function check_guess() {
+
+				// check if the guess is in the colours array
+				if(colours.indexOf(guess_input) == -1) {
+					alert("Sorry, I don't recognize your colour.\n\n Please try again.");
+					return false;
+				
+				// for input greater than target
+				}else if (guess_input > target) {				
+				
+					alert("Sorry, your guess is incorrect! \n\n Hint: your colour is alphabetically highter than mine.");
+					return false;
+				
+
+				// for input less than target
+				}else if(guess_input < target) {
+
+					alert("Sorry, your guess is incorrect! \n\n Hint: your colour is alphabetically lower than mine.");
+					return false;
+
+				}else {
+					
+					gameBody = document.getElementsByTagName("body")[0];
+					gameBody.style.background = target;	
+					alert("You are right! You took " + guesses +" guesses!");							
+					return true;
+				}  
+			}
+
+			window.onload = function() {
+
+				do_game();
+			};
+
 		</script>
 	</head>
 	<body>
-		?
+		?	
 	</body>
 </html>
