@@ -91,17 +91,11 @@
 					var game_body = document.getElementsByTagName("body")[0];
 					game_body.style.background = target;
 					
-					// delay the success message to allow background colour to change
-					setTimeout(display_success, 300);										
+					// delay the success message to allow background colour to change					
+					setTimeout('alert("You are right! You took " + guesses +" guesses!")', 300);
 					return true;
 				}  
-			}
-			
-			/* display the success message */
-			function display_success() {
-				
-				alert("You are right! You took " + guesses +" guesses!");	
-			}
+			}			
 
 			window.onload = function() {
 				
