@@ -48,7 +48,8 @@
 			// the main game function
 			function do_game() {
 
-				target_index = Math.floor( Math.random() * 7);
+				// select a random colour from the colours array
+				target_index = Math.floor( Math.random() * colours.length);
 				target = colours[target_index];
 				alert("The target colour is: " + target);				
 
@@ -57,13 +58,13 @@
 
 					guesses++;
 					guess_input = prompt("I am thinking of one of these colours: \n\n" +
-											colours +  "\n\nWhat colour am I thinking of?");
+									colours +  "\n\nWhat colour am I thinking of?");
 					game_over = check_guess();
 					
 				}
 			}
 
-			// check guess and give hints
+			// check guess input and give hints
 			function check_guess() {
 
 				// check if the guess is in the colours array
@@ -86,16 +87,26 @@
 
 				}else {					
 					
+					// change the background
 					var game_body = document.getElementsByTagName("body")[0];
 					game_body.style.background = target;
-					alert("You are right! You took " + guesses +" guesses!");											
+					
+					// delay the success message to allow background colour to change
+					setTimeout(display_success, 300);										
 					return true;
 				}  
 			}
+			
+			/* display the success message */
+			function display_success() {
+				
+				alert("You are right! You took " + guesses +" guesses!");	
+			}
 
 			window.onload = function() {
-
-				do_game();
+				
+				// wait 3 seconds before starting game to allow theme to load
+				setTimeout(do_game, 1500);
 			};
 
 		</script>
