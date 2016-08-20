@@ -19,17 +19,24 @@
 
 			#rightSide {
 				left: 500px;
-				border-left: 1px solid black;
+				border-left: 2px dashed black;
+			}
+			
+			h1 {
+				font-size: 2.5em;
+				color: gold;				
+				text-shadow: 2px 2px black; 
 			}
 
 		</style>
 		<script>		
 
+			// set up game variables
+			var numberOfFaces = 5;			
+			
 			// generate faces function
-			function generateFaces() {
-
-				// set up game variables
-				var numberOfFaces = 5;
+			function generateFaces() {				
+				
 				var theLeftSide = document.getElementById("leftSide");
 				var theRightSide = document.getElementById("rightSide");
 				var face = document.createElement("img");
@@ -44,25 +51,33 @@
 					theLeftSide.appendChild(faceClone);
 				}
 
-				// copy the lef side images, remove the last child and add to right side
+				// copy the left side images, remove the last child and add to right side
 				var leftSideImages = theLeftSide.cloneNode(true);
 				leftSideImages.removeChild(leftSideImages.lastChild);
 				theRightSide.appendChild(leftSideImages);
 
 				// add the click handler to the left side last child img
+				// this function sets up the next level and continues the game
 				theLeftSide.lastChild.onclick = 
 					function nextLevel(event){
 
 					        event.stopPropagation();
 					        
-					        // delete child nodes before next round
-					        theLeftSide.removeChild();
+					        // delete child nodes (imgs) from the left side
+					        while(theLeftSide.hasChildNodes()) {
+								theLeftSide.removeChild(theLeftSide.childNodes[0]);
+							}
+							// delet child node(div) from the right
+							theRightSide.removeChild(theRightSide.childNodes[0]);
 
 					        numberOfFaces += 5;
 					        generateFaces();
 
 					};
 				var theBody = document.getElementsByTagName("body")[0];
+				
+				// this function ends the game by displaying a
+				// message and clearing the onclick handlers
 				theBody.onclick = 
 					function gameOver() {
 
@@ -75,7 +90,7 @@
 
 			//start the game
 			window.onload = function() {
-
+				
 				generateFaces();
 			};
 		</script>
@@ -83,7 +98,7 @@
 	</head>
 	<body>
 		<h1>Matching Game</h1>
-		<p>Click on the extra smiling face on the the left.</p>
+		<h2>Click on the extra smiling face on the the left.</h2>
 
 		<div id="leftSide"></div>
 
