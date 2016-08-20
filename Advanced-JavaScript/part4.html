@@ -33,14 +33,22 @@
 
 			// set up game variables
 			var numberOfFaces = 5;			
-			
+			var level = 0;
 			// generate faces function
 			function generateFaces() {				
+				
+				// update and display the game level
+				var levelNode = document.getElementById('level');
+				if(levelNode.childNodes[0]) {
+					levelNode.removeChild(levelNode.childNodes[0]);
+				}
+				level++;								
+				levelNode.appendChild(document.createTextNode("Level: "+level));
 				
 				var theLeftSide = document.getElementById("leftSide");
 				var theRightSide = document.getElementById("rightSide");
 				var face = document.createElement("img");
-				face.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+				face.src = "smile.png";
 				
 				// create 5 face images and place them on the left side
 				for(var i = 0; i < numberOfFaces; i++) {
@@ -99,7 +107,7 @@
 	<body>
 		<h1>Matching Game</h1>
 		<h2>Click on the extra smiling face on the the left.</h2>
-
+		<h3 id="level"></h3>
 		<div id="leftSide"></div>
 
 		<div id="rightSide"></div>
